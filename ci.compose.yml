@@ -1,0 +1,31 @@
+services:
+  django:
+    image: $DJANGO_IMAGE:ci
+    command: python manage.py runserver 0:8000
+    container_name: django_local
+    build:
+      args:
+        DJANGO_IMAGE: $DJANGO_IMAGE
+      context: .
+      dockerfile: docker/django/ci.Dockerfile
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
+
+  postgres:
+    image: postgres:15
+    container_name: db_local
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+    env_file:
+      - ./backend/.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data/pgdata
+
+volumes:
+  pgdata:
