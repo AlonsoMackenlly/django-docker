@@ -25,4 +25,3 @@ git init
 uv tool run pre-commit install-hooks
 uv tool run pre-commit run --all-files
 EOF
-

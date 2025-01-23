@@ -1,14 +1,3 @@
-"""
-Django settings for server project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/4.2/topics/settings/
-
-For the full list of settings and their config, see
-https://docs.djangoproject.com/en/4.2/ref/settings/
-"""
-from typing import Tuple
-
 from config.env import BASE_DIR
 from config.env import env
 from django.utils.translation import gettext_lazy as _
@@ -24,7 +13,7 @@ BASE_FILES_DIR = BASE_DIR / "storage"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Application definition:
-INSTALLED_APPS: Tuple[str, ...] = (
+INSTALLED_APPS: tuple[str, ...] = (
     # Default django apps:
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -38,7 +27,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     "apps.application",
 )
 
-MIDDLEWARE: Tuple[str, ...] = (
+MIDDLEWARE: tuple[str, ...] = (
     # Django:
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
